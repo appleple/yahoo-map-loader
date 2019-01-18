@@ -21,6 +21,7 @@ $ yarn add yahoo-map-loader
 Webpack / Browserify
 
 ```js
+import YahooMapLoader from 'yahoo-map-loader';
 yahooMapLoader.appId = 'dj0zaiZpPVVCWFI0N3ZUWEJaYyZzPWNvbnN1bWVyc2VjcmV0Jng9ZGM-';
 yahooMapLoader.load((Y) => {
   const ymap = new Y.Map("map");
