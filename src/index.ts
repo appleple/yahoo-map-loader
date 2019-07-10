@@ -10,7 +10,6 @@ const yahooMapLoader: YMapLoader = {
   Y: null,
   appId: '',
   load: (fn) => {
-    Y.LatLng
     if (yahooMapLoader.Y) {
       fn(yahooMapLoader.Y);
     } else {
