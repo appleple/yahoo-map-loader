@@ -2,6 +2,7 @@ interface YMapLoader {
   endpoint: string,
   Y: typeof Y | null,
   appId: string,
+  exportGlobal: boolean,
   load(fn: (ymap: typeof Y) => any): void
 }
 
@@ -9,6 +10,7 @@ const yahooMapLoader: YMapLoader = {
   endpoint: 'https://map.yahooapis.jp/js/V1/jsapi',
   Y: null,
   appId: '',
+  exportGlobal: false,
   load: (fn) => {
     if (yahooMapLoader.Y) {
       fn(yahooMapLoader.Y);
@@ -20,7 +22,9 @@ const yahooMapLoader: YMapLoader = {
         if (yahooMapLoader.Y) {
           fn(yahooMapLoader.Y);
         }
-        window.Y = null;
+        if (!yahooMapLoader.exportGlobal) {
+          window.Y = null;
+        }
       }
       document.body.appendChild(script);
     }
